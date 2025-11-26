@@ -970,14 +970,6 @@ HellaSwag is also a test of natural language inference. The system needs to comp
 
 ---
 
-### WinoGrande
-| Benchmark | Details |
-|-----------|---------|
-| **HellaSwag** | Tests commonsense natural language inference via sentence completion (95%+ accuracy now common). |
-| **WinoGrande** | Evaluates pronoun resolution in adversarial contexts. |
-
----
-
 ## Frontier and Expert-Level
 
 ### Humanity's Last Exam (HLE)
@@ -986,11 +978,73 @@ HellaSwag is also a test of natural language inference. The system needs to comp
 |-----------|---------|
 | **Paper** | [Humanity's Last Exam](https://arxiv.org/abs/2501.14249) |
 | **Website** | [agi.safe.ai](https://agi.safe.ai/) |
-| **Questions** | 2,500 finalized (public) + private test set |
+| **Dataset** | [HuggingFace](https://huggingface.co/datasets/cais/hle) |
+| **Questions** | 2,500-3,000 across 100+ disciplines |
+| **Public Set** | 2,500 finalized + private test set |
+| **Format** | Closed-ended (multiple-choice, exact-match short answer) |
+| **Multi-modal** | ~14% require images or diagrams |
 | **Contributors** | Nearly 1,000 experts from 500+ institutions |
+| **Prize Pool** | $500,000 for high-quality questions |
+| **AI Performance** | <30% (initial release) |
+| **Human Graduates** | ~90% |
 | **Status** | Active, extremely hard |
 
-Designed to be "the final closed-ended academic benchmark," HLE contains extremely challenging questions at the frontier of human knowledge across 100+ subjects.
+Humanity's Last Exam (HLE) is a challenging, multi-modal benchmark designed to evaluate advanced language models on expert-level reasoning and knowledge, where current AI models significantly underperform human experts. Designed to be **"the final closed-ended academic benchmark,"** it contains extremely challenging questions at the frontier of human knowledge.
+
+**Purpose and Motivation:**
+
+HLE was created to address the problem of **benchmark saturation**, where previous tests like MMLU had become too easy for state-of-the-art AI. The benchmark aims to measure **genuine reasoning capabilities and expert-level understanding**, rather than simple information retrieval or pattern recognition.
+
+**Content and Format:**
+
+The benchmark consists of approximately **2,500-3,000 questions** across more than **100 academic disciplines**, including:
+- Mathematics
+- Humanities
+- Natural sciences
+- And many other expert-level domains
+
+**Question Characteristics:**
+
+- **Closed-Ended:** Multiple-choice or exact-match short answer format
+- **Multi-Modal:** About **14% require interpretation of images or diagrams**
+- **Extremely Difficult:** Filtered to ensure frontier LLMs could not answer them correctly at creation time
+- **Non-Searchable:** Original or non-trivial syntheses of information, making it impossible for AI to succeed through simple web searches or memorization of online facts
+
+**Collaborative Development:**
+
+HLE was developed as a **global, collaborative effort**:
+- Nearly **1,000 subject-matter experts** (professors and researchers)
+- From **500+ institutions**
+- **$500,000 prize pool** to incentivize high-quality, challenging questions
+
+This collaborative approach ensures diverse expertise and rigorous quality standards across all academic disciplines.
+
+**Performance and the AI-Human Gap:**
+
+As of its initial release, the results reveal a significant gap in reasoning abilities:
+- **Best AI models:** Below **30%** accuracy
+- **Human graduate students:** Nearly **90%** accuracy
+
+This substantial performance gap highlights fundamental limitations in current AI reasoning capabilities when faced with expert-level questions requiring deep understanding.
+
+**Calibration Issues:**
+
+Models also tend to show **high confidence in their incorrect answers**, a phenomenon known as **poor calibration**. This means AI systems not only fail to answer correctly but also fail to recognize their own uncertainty—a critical problem for deploying AI in high-stakes domains.
+
+**Impact and Use Cases:**
+
+HLE serves as a key tool for:
+- **Tracking AI Progress:** Measuring improvements in reasoning and expert-level understanding over time
+- **Informing Policy:** Providing data for regulatory discussions about AI capabilities and limitations
+- **Research Benchmarking:** Enabling rigorous evaluation of new model architectures and training approaches
+
+**Quality Assurance and Revisions:**
+
+While HLE represents a significant benchmark achievement, it has faced some criticism. Some analyses suggest a notable percentage of chemistry/biology questions may be:
+- Ambiguous
+- Have answers that conflict with some peer-reviewed literature
+
+In response, the creators plan a **rolling revision process** to continuously improve question quality and address identified issues, ensuring the benchmark remains rigorous and fair.
 
 ---
 
