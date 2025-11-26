@@ -524,13 +524,46 @@ The benchmark's verifiable nature makes it an essential tool for objectively mea
 
 | Attribute | Details |
 |-----------|---------|
+| **Paper** | [Chatbot Arena: An Open Platform for Evaluating LLMs by Human Preference](https://arxiv.org/abs/2403.04132) |
 | **Website** | [lmarena.ai](https://lmarena.ai/) |
+| **Created By** | UC Berkeley researchers |
 | **Method** | Crowdsourced human evaluation |
 | **Format** | Anonymous head-to-head battles |
 | **Metric** | Elo rating system |
 | **Votes Collected** | 5M+ |
 
-The gold standard for human preference evaluation.
+Created by researchers from UC Berkeley, LMArena is an open platform where everyone can easily access, explore and interact with the world's leading AI models. By comparing them side by side and casting votes for the better response, the community helps shape a public leaderboard, making AI progress more transparent and grounded in real-world usage.
+
+**Chatbot Arena (Core Platform):**
+
+Chatbot Arena is an open-source platform for evaluating large language models (LLMs) through crowdsourced human preferences:
+
+- **Methodology:** Users anonymously vote on which of two chatbots provides a better response to a given prompt through blind, side-by-side comparisons
+- **Ranking:** Votes are used to calculate an Elo rating for each model, which ranks them on the leaderboard
+- **Data:** The platform has collected a large amount of data through user votes, which can be used for other research
+- **Openness:** It is an open platform widely cited by LLM developers and researchers
+
+**LMArena Benchmark:**
+
+While "LMArena" often refers to the platform itself, it also represents a specific benchmark/leaderboard that has faced some criticism:
+
+- **Data Asymmetries:** Some studies suggest the LMArena benchmark may favor larger, proprietary models due to data asymmetries and private testing privileges
+- **Data Access Concerns:** There are concerns that leading model providers have had better access to the data
+- **Model Version Discrepancies:** Models submitted to the leaderboard may not represent the exact versions released publicly
+
+**Advantages and Benefits:**
+
+- **Avoids Traditional Benchmark Pitfalls:** Unlike benchmarks that rely solely on automated scores, the Arena approach incorporates human preference in a conversational context
+- **Real-World Usage:** Captures how models perform on actual user queries rather than curated test sets
+- **Community-Driven:** Democratizes LLM evaluation through broad community participation
+
+**Risks and Limitations:**
+
+- **Risk of Gaming:** As with any benchmark, there is a risk of models being "over-optimized" for the platform, leading to distorted results (Goodhart's Law: "When a measure becomes a target, it ceases to be a good measure")
+- **Potential Biases:** Possible systematic biases toward certain model types or providers
+- **Need for Multiple Metrics:** The controversy highlights that no single evaluation metric should be trusted in isolation—a combination of approaches is necessary for comprehensive evaluation
+
+**Status:** Widely regarded as the gold standard for human preference evaluation, while also requiring critical interpretation alongside other benchmarks.
 
 ---
 
