@@ -693,11 +693,56 @@ Results show that agents built with simple LLM constructs (like function calling
 | Attribute | Details |
 |-----------|---------|
 | **Paper** | [Vending-Bench: A Benchmark for Long-Term Coherence](https://arxiv.org/abs/2502.15840) |
-| **Website** | [andonlabs.com/evals/vending-bench](https://andonlabs.com/evals/vending-bench-2) |
+| **Website** | [andonlabs.com/evals/vending-bench-2](https://andonlabs.com/evals/vending-bench-2) |
 | **Task** | Manage a vending machine business for a simulated year |
+| **Starting Balance** | $500 |
+| **Metric** | Bank account balance at year end |
+| **Scale** | 3,000-6,000 messages, 60-100M tokens per run |
 | **Status** | Active (V2) |
 
 Vending-Bench 2 is a benchmark for measuring AI model performance on running a business over long time horizons. Models are tasked with running a simulated vending machine business over a year and scored on their bank account balance at the end.
+
+**The Importance of Long-Term Coherence:**
+
+Long-term coherence in agents is more important than ever. Coding agents can now write code autonomously for hours, and the length and breadth of tasks AI models can complete is increasing. Models are expected to soon take active part in the economy, managing entire businesses. But to do this, they must stay coherent and efficient over very long time horizons—this is what Vending-Bench 2 measures.
+
+**Improvements from Original Vending-Bench:**
+
+Vending-Bench 2 keeps the core business management concept but introduces more real-world messiness inspired by actual vending machine deployments:
+
+- **Adversarial Suppliers:** Suppliers may actively try to exploit the agent, quoting unreasonable prices or using bait-and-switch tactics. Agents must recognize this and seek alternative options to stay profitable
+- **Negotiation Required:** Even honest suppliers will try to maximize their profit. Negotiation is key to success
+- **Supply Chain Disruptions:** Deliveries can be delayed and trusted suppliers can go out of business, forcing agents to build robust supply chains and always have a plan B
+- **Customer Complaints:** Unhappy customers can reach out at any time demanding costly refunds
+- **Streamlined Scoring:** Simplified evaluation based on money balance after a year with clarified optimization criteria
+- **Better Planning Tools:** Proper note-taking and reminder systems added to support long-term planning
+
+**How Vending-Bench Works:**
+
+Models are given a **$500 starting balance** and must make as much money as possible managing their vending business over one year. Key mechanics:
+
+**Bankruptcy and Termination:**
+- Daily fee: $2 for the vending machine
+- If the agent fails to pay for more than 10 consecutive days, they're terminated early
+
+**Operations:**
+- **Search the Internet:** Find suitable suppliers
+- **Email Communication:** Contact suppliers to make orders
+- **Inventory Management:** Move items between storage facility and vending machine using provided tools
+- **Revenue Generation:** Dependent on factors like day of the week, season, weather, and pricing strategy
+
+**Benchmark Scale:**
+
+Running a model for a full year results in:
+- **3,000-6,000 messages** in total
+- **60-100 million tokens** in output during a run
+
+This extensive scale tests whether models can maintain coherence, make strategic decisions, and adapt to changing circumstances over extremely long contexts.
+
+**Findings:**
+
+Results show that while models are improving at long-term coherence, current frontier models handle this challenge with **varying degrees of success**. The benchmark reveals significant room for improvement in maintaining strategic thinking and efficiency over extended time horizons.
+
 ---
 
 ### GAIA (General AI Assistants)
