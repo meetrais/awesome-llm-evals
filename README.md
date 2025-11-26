@@ -148,15 +148,38 @@ ARC-AGI-2 significantly raises the bar by demanding both **high adaptability and
 ### AIME 2024/2025 (American Invitational Mathematics Examination)
 
 | Attribute | Details |
-|-----------|---------|
+|-----------|------------|
 | **Paper** | Various technical reports |
 | **Dataset** | [HuggingFace](https://huggingface.co/datasets/opencompass/AIME2025) |
 | **Questions** | 30 problems per year (2 contests x 15) |
+| **Competition Type** | Invite-only, gateway to USAMO |
 | **Difficulty** | Competition-level (top 5% high school students) |
-| **Answer Format** | Integer from 000-999 |
+| **Answer Format** | Single integer from 000-999 |
 | **Human Median** | 4-6 correct out of 15 |
 
-AIME problems are derived from the prestigious American Invitational Mathematics Examination, challenging models with multi-step reasoning across algebra, geometry, number theory, and combinatorics.
+The American Invitational Mathematics Examination (AIME) is a prestigious, invite-only mathematics competition for high school students that serves as a crucial gateway for qualifying to the USA Mathematical Olympiad (USAMO). This benchmark evaluates LLM performance on highly challenging problems covering a wide range of mathematical topics including algebra, geometry, number theory, and combinatorics.
+
+**Key Characteristics:**
+
+**Difficulty and Challenge Level**
+- Highly challenging problems requiring multi-step reasoning and deep mathematical understanding
+- Each answer is a single integer (000-999), requiring exact precision
+- Median human score: **4-6 correct answers out of 15**, demonstrating the exceptional difficulty
+- Problems demand sophisticated problem-solving strategies beyond pattern recognition
+
+**Challenging Benchmark**
+- AIME remains a challenging benchmark for evaluating mathematical reasoning in AI systems
+- While some frontier models achieve strong performance, the benchmark continues to provide headroom for improvement
+- Serves as a useful discriminator between models' mathematical reasoning capabilities
+- The difficulty level ensures meaningful evaluation of advanced mathematical problem-solving abilities
+
+**Data Contamination Concerns**
+- All AIME questions and answers are publicly available, creating potential for data contamination if included in model pretraining corpora
+- Models perform **significantly better on older AIME versions compared to newer ones**, raising suspicions about memorization vs. genuine reasoning
+- This performance gap highlights the importance of using recent AIME editions for fair evaluation
+- Evaluators should be cautious when interpreting results and consider testing on the most recent years
+
+> **Note:** When using AIME for evaluation, prioritize the most recent exam years (2024/2025) to minimize potential data contamination effects and obtain more accurate assessments of true mathematical reasoning capabilities.
 
 ---
 
@@ -166,12 +189,34 @@ AIME problems are derived from the prestigious American Invitational Mathematics
 |-----------|---------|
 | **Paper** | [FrontierMath: A Benchmark for Evaluating Advanced Mathematical Reasoning in AI](https://arxiv.org/abs/2411.04872) |
 | **Created By** | Epoch AI (with OpenAI support) |
-| **Problems** | Several hundred original problems |
-| **Difficulty Tiers** | 4 (Tier 4 = research-level mathematics) |
-| **Contributors** | 60+ mathematicians from universities worldwide |
-| **Status** | Active, highly challenging (over 98% unsolved) |
+| **Problems** | 350 original mathematics problems |
+| **Difficulty Range** | Challenging university-level to expert research problems |
+| **Difficulty Tiers** | 4 (Tier 4: 50 extremely difficult problems) |
+| **Contributors** | Mathematics professors and postdoctoral researchers |
+| **Format** | Natural-language problems with closed-form expressions |
+| **Status** | Novel, unpublished problems |
 
-FrontierMath is designed to evaluate whether AI systems possess research-level mathematical reasoning capabilities. Problems typically require hours or even days for specialist mathematicians to solve.
+FrontierMath evaluates whether AI systems possess research-level mathematical reasoning capabilities. The benchmark spans from challenging university-level questions to problems that may take expert mathematicians days to solve, demanding creative insight, connecting disparate concepts, and sophisticated reasoning.
+
+**Key Characteristics:**
+
+**Problem Design and Requirements**
+- Natural-language math problems with solutions expressed as closed-form mathematical expressions
+- All problems are novel and unpublished to ensure models haven't encountered them during training
+- **Definite, verifiable answers**: Large integers, symbolic reals, or tuples that can be checked computationally
+- **"Guessproof" design**: Answers resist random attempts or trivial brute-force approaches
+- **Computational tractability**: Solution scripts must run in less than one minute on standard hardware
+
+**Tier 4 - Most Challenging**
+- 50 extremely difficult problems developed as short-term research projects
+- Created by mathematics professors and postdoctoral researchers
+- Solving these tasks would provide evidence that AI can perform the complex reasoning needed for scientific breakthroughs
+
+**Quality Assurance**
+- Each problem undergoes peer review by expert mathematicians
+- Reviews verify correctness, check for ambiguities, and assess difficulty ratings
+- Error rate approximately 1 in 20 problems (comparable to ImageNet and other major ML benchmarks)
+- Expanding expert review process and error-bounty program to further reduce errors
 
 ---
 
