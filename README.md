@@ -634,14 +634,57 @@ WildBench's combination of real-world task complexity, sophisticated evaluation 
 | Attribute | Details |
 |-----------|---------|
 | **Paper** | [TAU-bench: A Benchmark for Tool-Augmented User Simulation](https://arxiv.org/abs/2406.12045) |
+| **Website** | [Sierra AI Research](https://sierra.ai/blog/benchmarking-ai-agents) |
 | **Dataset** | [GitHub](https://github.com/sierra-research/tau-bench) |
-| **Domains** | Retail and Airline |
-| **Metric** | Pass Rate (max 30 turns) |
+| **Created By** | Sierra AI Research Team |
+| **Domains** | τ-retail and τ-airline |
+| **Metric** | Pass Rate & pass^k (reliability metric) |
+| **Max Turns** | 30 turns per interaction |
 
-TAU-bench evaluates agents in realistic, tool-heavy scenarios (e.g., modifying a flight, returning a purchase) where the user is also simulated. It tests the ability to navigate complex policies and database states reliably.
+Sierra's AI research team presents τ-bench (TAU-bench), a benchmark for evaluating AI agents' performance and reliability in real-world settings with dynamic user and tool interaction. Unlike existing benchmarks that only evaluate single-round interactions, τ-bench tests agents on completing complex tasks while interacting with LLM-simulated users and tools over multiple turns to gather required information.
 
-**Performance:**
-- Frontier models often struggle to exceed 60-70% success rates due to strict policy adherence requirements.
+**The Gap in Existing Benchmarks:**
+
+While benchmarks like WebArena, SWE-bench, and AgentBench are useful for revealing high-level capabilities, they fall short in critical areas:
+- Only evaluate a single round of interaction where all information is exchanged at once
+- Don't reflect real-life scenarios where agents gather information over multiple, dynamic exchanges
+- Focus on first-order statistics (average performance) without measures of reliability or adaptability
+
+**Three Critical Requirements for Real-World Agents:**
+
+Drawing from experience with live agents in production, τ-bench addresses three key requirements:
+
+1. **Multi-Turn Interaction:** Agents must interact seamlessly with both humans and programmatic APIs over long horizons to incrementally gather information and solve complex problems
+2. **Policy Adherence:** Agents must accurately follow complex domain-specific policies or rules to avoid violating company policies or producing unwanted behavior
+3. **Reliability at Scale:** Agents must maintain consistency and reliability across millions of interactions to ensure predictable behavior
+
+**Modular Framework Components:**
+
+τ-bench uses a modular framework with three key elements:
+
+1. **Realistic Databases and Tool APIs:** Complex, stateful databases with programmatic APIs for realistic tool interaction
+2. **Domain-Specific Policy Documents:** Guidelines dictating required agent behavior for policy compliance testing
+3. **LLM-Based User Simulator:** Guided by instructions for diverse scenarios to produce realistic user utterances
+
+**Example Use Case:**
+For an airline reservation agent, if a user wants to change their flight to a different destination, the agent must: (1) gather required information through user interaction, (2) check airline policies, (3) search for new flights using complex APIs, and (4) rebook if possible—all while following strict policy guidelines.
+
+**Evaluation and Metrics:**
+
+- **Stateful Evaluation:** Compares database state after task completion with expected outcome for objective measurement
+- **pass^k Metric:** New reliability metric that measures if an agent can successfully complete the same task multiple times (k trials), ensuring consistency at scale
+- **Goal-Based Assessment:** Focuses on database state rather than conversation quality, enabling fast and faithful evaluation without human or LLM judges
+
+**Key Features:**
+
+- **Realistic Dialog and Tool Use:** Complex databases and realistic LLM-powered user simulation with varied scenarios specified in natural language
+- **Open-Ended and Diverse Tasks:** Rich data schemas, APIs, and policy documents support creative, diverse agent tasks
+- **Faithful Objective Evaluation:** Database state evaluation provides fast, objective assessment of agent capabilities
+- **Modular Framework:** Easy addition of new domains, database entries, rules, APIs, tasks, and evaluation metrics
+
+**Findings:**
+
+Results show that agents built with simple LLM constructs (like function calling or ReAct) **perform poorly on even relatively simple tasks**, highlighting the need for more sophisticated agent architectures. Frontier models often struggle to exceed **60-70% success rates** due to strict policy adherence requirements, demonstrating significant room for improvement in agent reliability.
 
 ---
 
