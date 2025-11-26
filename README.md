@@ -485,14 +485,36 @@ Analysis by Epoch AI suggests approximately **90-95% of questions are valid**, i
 | Attribute | Details |
 |-----------|---------|
 | **Paper** | [Instruction-Following Evaluation for Large Language Models](https://arxiv.org/abs/2311.07911) |
+| **Dataset** | [HuggingFace](https://huggingface.co/datasets/google/IFEval) |
+| **Created By** | Google |
+| **Instruction Types** | 25 types of verifiable instructions |
+| **Prompts** | ~500 prompts |
 | **Focus** | Verifiable instruction following |
 | **Format** | Programmatically checkable instructions |
 
-IFEval focuses on "verifiable instructions" (e.g., "no capitalized words," "response must be JSON").
+One core capability of Large Language Models (LLMs) is to follow natural language instructions. However, the evaluation of such abilities is not standardized: Human evaluations are expensive, slow, and not objectively reproducible, while LLM-based auto-evaluation is potentially biased or limited by the ability of the evaluator LLM.
 
-**Metrics:**
-- **Strict Accuracy**: Binary--did the LLM follow instructions exactly?
-- **Loose Accuracy**: Accounts for minor variations
+**Benchmark Design:**
+
+To overcome these evaluation challenges, IFEval (Instruction-Following Eval) provides a straightforward and easy-to-reproduce evaluation benchmark. It focuses on a set of "verifiable instructions" that can be programmatically checked, such as:
+- "Write in more than 400 words"
+- "Mention the keyword of AI at least 3 times"
+- "No capitalized words"
+- "Response must be JSON"
+
+**Dataset Composition:**
+
+IFEval identifies **25 types of verifiable instructions** and constructs around **500 prompts**, with each prompt containing one or more verifiable instructions. This structure allows for:
+- Objective, automated evaluation without human judgment
+- Reproducible results across different evaluations
+- Unbiased assessment independent of evaluator model capabilities
+
+**Evaluation Metrics:**
+
+- **Strict Accuracy**: Binary metric—did the LLM follow instructions exactly?
+- **Loose Accuracy**: Accounts for minor variations while maintaining instruction compliance
+
+The benchmark's verifiable nature makes it an essential tool for objectively measuring how well LLMs can follow specific, measurable instructions without the subjectivity of human evaluation or the limitations of LLM-as-judge approaches.
 
 ---
 
