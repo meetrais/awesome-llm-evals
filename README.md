@@ -225,11 +225,35 @@ FrontierMath evaluates whether AI systems possess research-level mathematical re
 | Attribute | Details |
 |-----------|---------|
 | **Paper** | [Challenging the Boundaries of Reasoning: An Olympiad-Level Math Benchmark](https://arxiv.org/abs/2503.21380) |
-| **Problems** | 200 curated problems |
-| **Subsets** | OlymMATH-EASY (AIME-level) and OlymMATH-HARD |
-| **Languages** | English and Chinese versions |
+| **Dataset** | [GitHub](https://github.com/RUCAIBox/OlymMATH) |
+| **Problems** | 200 meticulously curated problems |
+| **Subsets** | AIME-level (easy) and Harder problems |
+| **Languages** | English (OlymMATH-EN) and Chinese (OlymMATH-ZH) |
+| **Sources** | Manually sourced from printed materials (magazines, textbooks, competition materials) |
+| **Focus** | Four core mathematical fields |
 
-A newer Olympiad-level benchmark with significantly harder problems than AIME.
+OlymMATH is a new, challenging Olympiad-level mathematical benchmark for evaluating the complex reasoning capabilities of large language models (LLMs). It was introduced by researchers to address the saturation of existing, easier math benchmarks and minimize data contamination risks.
+
+**Key Features of OlymMATH:**
+
+**Content and Difficulty**
+- The benchmark comprises 200 meticulously curated problems sourced manually from printed materials (magazines, textbooks, competition materials) to ensure originality and minimize prior online exposure
+- The problems are split into two tiers:
+  - **AIME-level (easy)**: Establishes a baseline for current LLMs
+  - **Harder problems**: Designed to push the boundaries of state-of-the-art models, with which even top models struggle
+
+**Bilingual Assessment**
+- All problems are available in parallel English (OlymMATH-EN) and Chinese (OlymMATH-ZH) versions, enabling cross-lingual evaluation of reasoning abilities
+
+**Objective Evaluation**
+- Each problem includes a verifiable numerical solution, allowing for objective, rule-based, and automatic scoring
+
+**Focus Areas**
+- The problems span four core mathematical fields
+    - Algebra
+    - Geometry
+    - Number theory
+    - Combinatorics
 
 ---
 
