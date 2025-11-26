@@ -348,10 +348,42 @@ SWE-bench evaluation works as follows:
 | **Paper** | [LiveCodeBench: Holistic and Contamination Free Evaluation](https://arxiv.org/abs/2403.07974) |
 | **Website** | [livecodebench.github.io](https://livecodebench.github.io/) |
 | **Problems** | 1,150+ (release v7, Nov 2025) |
+| **Initial Collection** | 300+ problems (May 2023 - February 2024) |
 | **Sources** | LeetCode, AtCoder, CodeForces |
+| **Models Evaluated** | 29 LLMs |
 | **Status** | Continuously updated |
 
-A contamination-free benchmark that continuously collects new competitive programming problems released *after* a model's training cutoff.
+LiveCodeBench is a holistic and contamination-free evaluation benchmark for LLMs that continuously collects new problems over time. Unlike traditional benchmarks, LiveCodeBench focuses on broader code-related capabilities beyond mere code generation, including self-repair, code execution, and test output prediction.
+
+**Key Features:**
+
+**Holistic Evaluation**
+- Evaluates models on a variety of code-related scenarios:
+  - **Code Generation:** Traditional code writing tasks
+  - **Self-Repair:** Ability to fix broken code
+  - **Test Output Prediction:** Predicting test results without execution
+  - **Code Execution:** Understanding runtime behavior
+- While model performances are correlated across different scenarios, relative performances and ordering can vary between scenarios
+
+**Contamination-Free Methodology**
+
+LiveCodeBench addresses the critical issue of data contamination through time-based evaluation:
+- **Release Date Annotation:** All problems are annotated with their original release dates
+- **Post-Cutoff Evaluation:** For a model with training-cutoff date D, it can be evaluated on problems released after D to measure generalization on truly unseen problems
+- **Continuous Updates:** Regularly adds new problems to maintain freshness and prevent contamination
+
+**Empirical Findings**
+
+The benchmark reveals important insights about model performance and potential contamination:
+
+- **DeepSeek Performance Pattern:** DeepSeek models exhibit a stark drop in performance on LeetCode problems released since September 2023 (its release date), indicating earlier problems might be contaminated
+- **GPT Stability:** GPT models show relatively stable performance across different months, suggesting better generalization
+- **Model Comparison:** Testing 29 LLMs across different time periods reveals novel empirical findings not captured in traditional static benchmarks
+
+**Time-Based Analysis**
+- Performance tracking across different release months enables detection of contamination patterns
+- Allows measuring true generalization capabilities vs. memorization
+- Provides more reliable evaluation for comparing models with different training cutoff dates
 
 ---
 
