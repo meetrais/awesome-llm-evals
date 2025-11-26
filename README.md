@@ -392,11 +392,50 @@ The benchmark reveals important insights about model performance and potential c
 | Attribute | Details |
 |-----------|---------|
 | **Paper** | [BigCodeBench: Benchmarking Code Generation](https://arxiv.org/abs/2406.15877) |
+| **Website** | [Leaderboard](https://bigcode-bench.github.io/) |
 | **Dataset** | [GitHub](https://github.com/bigcode-project/bigcodebench) |
 | **Tasks** | 1,140 software engineering tasks |
+| **Splits** | Complete (full docstrings) & Instruct (natural language) |
 | **Focus** | Complex instruction following & library usage |
 
-BigCodeBench challenges LLMs to solve practical programming tasks requiring diverse function calls (Pandas, Matplotlib, Requests) rather than just algorithmic logic.
+BigCodeBench is an easy-to-use benchmark for solving practical and challenging tasks via code. It aims to evaluate the true programming capabilities of large language models (LLMs) in a more realistic setting. The benchmark is designed for HumanEval-like function-level code generation tasks, but with much more complex instructions and diverse function calls.
+
+**Evaluation Splits:**
+
+BigCodeBench provides two distinct evaluation approaches:
+
+1. **Complete Split**
+   - Designed for code completion based on comprehensive docstrings
+   - Models generate code using detailed documentation
+   - Tests ability to understand and implement from specifications
+
+2. **Instruct Split**
+   - Works specifically for instruction-tuned and chat models
+   - Models generate code snippets based on natural language instructions
+   - Instructions contain only necessary information
+   - Requires more complex reasoning and interpretation
+
+**Why BigCodeBench?**
+
+BigCodeBench focuses on task automation via code generation with diverse function calls and complex instructions:
+
+- **Precise Evaluation & Ranking:** Features a comprehensive [leaderboard](https://bigcode-bench.github.io/) showing latest LLM rankings before and after rigorous evaluation
+- **Pre-generated Samples:** Accelerates code intelligence research by open-sourcing LLM-generated samples for various models, eliminating the need to re-run expensive benchmarks
+- **Practical Tasks:** Challenges LLMs to solve real-world programming tasks requiring diverse function calls (Pandas, Matplotlib, Requests) rather than just algorithmic logic
+
+**Industry Adoption:**
+
+BigCodeBench has been trusted by many leading LLM teams including:
+- Zhipu AI
+- Alibaba Qwen
+- DeepSeek
+- Amazon AWS AI
+- Snowflake AI Research
+- ServiceNow Research
+- Meta AI
+- Cohere AI
+- Sakana AI
+- Allen Institute for Artificial Intelligence (AI2)
 
 ---
 
