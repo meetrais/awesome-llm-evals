@@ -303,13 +303,41 @@ OpenAI introduced MLE-bench, a benchmark for measuring how well AI agents perfor
 | Attribute | Details |
 |-----------|---------|
 | **Paper** | [SWE-bench: Can Language Models Resolve Real-World GitHub Issues?](https://arxiv.org/abs/2310.06770) |
+| **Website** | [swebench.com](https://www.swebench.com/original.html) |
 | **Dataset** | [GitHub](https://github.com/princeton-nlp/SWE-bench) |
 | **Problems** | 2,294 real GitHub issues |
 | **Repositories** | 12 popular Python repos |
 | **Task** | Generate patches to resolve issues |
 | **Subsets** | Verified (500), Lite (300), Multimodal (517) |
+| **Released** | October 2023 |
 
-SWE-bench evaluates LLMs on real-world software engineering tasks. It has become the industry standard for evaluating agentic coding capabilities.
+SWE-bench tests AI systems' ability to solve real-world GitHub issues. It has become the industry standard for evaluating agentic coding capabilities.
+
+**Task Collection Methodology:**
+
+The benchmark collects 2,294 task instances by crawling Pull Requests and Issues from 12 popular Python repositories. Each instance is based on a pull request that:
+1. Is associated with an issue
+2. Modified 1+ testing related files
+
+**Execution Environment:**
+
+Per instance, an execution environment (Docker Image) is constructed with the repository successfully installed at the commit that the Pull Request is based on:
+- **Without the Pull Request's changes:** A number of test(s) fail
+- **After the Pull Request is merged:** The same set of test(s) pass
+- These "Fail-to-Pass" tests are the primary signal for evaluation
+
+**Evaluation Process:**
+
+SWE-bench evaluation works as follows:
+1. Per task instance, an AI system is given the issue text
+2. The AI system should then modify the codebase to resolve the described issues
+3. When the AI system finishes, the aforementioned Fail-to-Pass tests are run to check if the issue was successfully resolved
+
+**Performance and Evolution:**
+
+- **Initial Baseline (October 2023):** Retrieval Augmented Generation (RAG) baseline scored just **1.96%**
+- **SWE-agent:** The first agent-based AI system introduced for performing software engineering tasks, achieving **12.47%** on SWE-bench
+- **SWE-smith Dataset:** Available for training agentic software engineering models
 
 ---
 
