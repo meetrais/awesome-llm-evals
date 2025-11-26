@@ -450,10 +450,31 @@ BigCodeBench has been trusted by many leading LLM teams including:
 | **Questions** | 198 (Diamond), 448 (Main) |
 | **Subjects** | Biology, Physics, Chemistry |
 | **Authors** | PhD-level domain experts |
+| **Format** | Multiple-choice (4 options) |
+| **Random Baseline** | 25% |
+| **Human Expert Score** | 69.7% (PhD-level) |
 
-GPQA features questions written by domain experts that are "Google-proof"--designed to be extremely difficult even with unrestricted internet access.
+The GPQA (Graduate-Level Google-Proof Q&A) dataset is a collection of challenging multiple-choice questions in biology, physics, and chemistry. Questions are written by domain experts (people with or pursuing PhDs in the relevant fields), and they are designed to be very difficult for non-experts to answer, even with unrestricted internet access.
 
-**Status:** Approaching saturation. Analysis by Epoch AI suggests approximately 90-95% of questions are valid.
+**GPQA Diamond Subset:**
+
+Evaluations are typically run on the Diamond subset of GPQA, which represents a higher-quality, more challenging subset of the main GPQA dataset. The Diamond subset contains **198 questions** that meet stringent quality criteria:
+- Both domain expert annotators got the correct answers
+- The majority of non-domain experts answered incorrectly
+
+This dual requirement ensures that questions are both technically accurate and genuinely challenging for those without specialized expertise.
+
+**Format and Baselines:**
+
+- **Question Format:** Multiple-choice questions with four options
+- **Random Guessing Baseline:** 25% accuracy
+- **Human Expert Performance:** OpenAI recruited PhD-level experts to answer questions in GPQA Diamond and found they scored **69.7%**
+
+This human baseline was established as part of OpenAI's o1 model evaluation, providing a meaningful comparison point for AI performance against top human experts in their respective fields.
+
+**Quality and Status:**
+
+Analysis by Epoch AI suggests approximately **90-95% of questions are valid**, indicating high overall quality. The benchmark is approaching saturation as frontier models continue to improve.
 
 ---
 
