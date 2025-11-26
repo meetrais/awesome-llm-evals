@@ -750,10 +750,39 @@ Results show that while models are improving at long-term coherence, current fro
 | Attribute | Details |
 |-----------|---------|
 | **Paper** | [GAIA: a benchmark for General AI Assistants](https://arxiv.org/abs/2311.12983) |
+| **Website** | [Meta AI Research](https://ai.meta.com/research/publications/gaia-a-benchmark-for-general-ai-assistants/) |
 | **Dataset** | [HuggingFace](https://huggingface.co/gaia-benchmark) |
+| **Questions** | 466 real-world questions |
 | **Human Performance** | 92% |
+| **GPT-4 with Plugins** | 15% |
 
-GAIA tests AI assistants on real-world questions requiring reasoning, multi-modality handling, web browsing, and tool-use.
+GAIA is a benchmark for General AI Assistants that, if solved, would represent a milestone in AI research. It proposes real-world questions that require a set of fundamental abilities such as reasoning, multi-modality handling, web browsing, and generally tool-use proficiency.
+
+**The Human-AI Performance Gap:**
+
+GAIA questions are **conceptually simple for humans yet challenging for most advanced AIs**:
+- **Human respondents:** 92% success rate
+- **GPT-4 equipped with plugins:** 15% success rate
+
+This **notable performance disparity** contrasts sharply with the recent trend of LLMs outperforming humans on tasks requiring professional skills in areas like law or chemistry. While AI excels at specialized professional tasks, it struggles with questions that average humans find straightforward.
+
+**GAIA's Philosophy:**
+
+GAIA's philosophy departs from the current trend in AI benchmarks that target tasks ever more difficult for humans. Instead, GAIA posits that **the advent of Artificial General Intelligence (AGI) hinges on a system's capability to exhibit similar robustness as the average human does on such questions**.
+
+The benchmark shifts focus from specialized expertise to general competence—the ability to handle everyday questions that require:
+- **Reasoning:** Multi-step logical thinking
+- **Multi-modality Handling:** Processing text, images, and other data types
+- **Web Browsing:** Finding and synthesizing information online
+- **Tool-Use Proficiency:** Effectively utilizing available tools and resources
+
+**Dataset:**
+
+Using GAIA's methodology, researchers devised **466 questions and their answers**, each designed to test the fundamental abilities required for general AI assistance rather than narrow domain expertise.
+
+**Significance:**
+
+GAIA represents a philosophical shift in how we evaluate progress toward AGI—measuring not how well AI can perform superhuman feats of expertise, but how robustly it can handle the conceptually simple tasks that any average human navigates with ease. This makes GAIA a critical benchmark for understanding the gap between narrow AI capabilities and true general intelligence.
 
 ---
 
@@ -765,10 +794,52 @@ GAIA tests AI assistants on real-world questions requiring reasoning, multi-moda
 |-----------|---------|
 | **Paper** | [EQ-Bench: An Emotional Intelligence Benchmark](https://arxiv.org/abs/2312.06281) |
 | **Website** | [eqbench.com](https://eqbench.com/) |
-| **Questions** | 45 challenging roleplay scenarios |
-| **Judge** | Claude Sonnet 3.7 |
+| **Scenarios** | 45 challenging roleplay scenarios |
+| **Judge** | Claude Sonnet 3.7 (LLM-judged) |
+| **Metrics** | Rubric scores & Elo ratings |
+| **Elo Normalization** | o3=1500, llama-3.2-1b=200 |
 
-EQ-Bench 3 evaluates emotional intelligence in LLMs by testing their ability to understand complex emotions and social interactions.
+EQ-Bench 3 is an LLM-judged benchmark that tests emotional intelligence (EQ) through challenging role-plays and analysis tasks. It measures empathy, social skills, and insight in scenarios like relationship conflicts and workplace dilemmas.
+
+**Why EQ-Bench 3?**
+
+Standard EQ tests are too easy for LLMs, and existing benchmarks often miss nuanced social skills crucial for human-AI interaction. EQ-Bench 3 uses difficult, free-form role-plays to better discriminate between models, addressing the gap between simple emotional understanding and the complex social intelligence needed for realistic interactions.
+
+**How It Works:**
+
+EQ-Bench 3 employs a structured evaluation process:
+
+1. **In-Character Response:** Models respond as the character in the scenario
+2. **Internal Reasoning:** Models explain their thought process ("I'm thinking/feeling...")
+3. **Debriefing:** Models reflect on the interaction and their decisions
+
+Responses are then evaluated through:
+- **Detailed Rubric:** Judges responses against specific criteria
+- **Pairwise Comparisons:** Models are compared head-to-head to generate Elo ratings
+- **Elo Normalization:** Scores normalized with o3=1500 and llama-3.2-1b=200 as anchors
+
+**Scoring Systems:**
+
+**1. Rubric Scores (Absolute)**
+- Evaluates responses against predefined criteria
+- Less discriminative but provides clear benchmarks
+- Useful for understanding specific strengths and weaknesses
+
+**2. Elo Scores (Relative)**
+- Based on pairwise comparisons between models
+- More discriminative, revealing finer performance differences
+- Better for ranking models and understanding relative capabilities
+
+**Key Features:**
+
+- **Active EQ Focus:** Tests practical application of emotional intelligence in realistic scenarios, not just theoretical understanding
+- **Challenging & Discriminative Scenarios:** Difficult role-plays (relationship conflicts, workplace dilemmas) that effectively differentiate model capabilities
+- **Bias Mitigation:**
+  - **Length Truncation:** Applied to Elo comparisons to reduce length bias
+  - **Position Bias Control:** Ensures fair evaluation regardless of response ordering
+- **Full Transcripts:** Complete interaction transcripts available for detailed analysis and transparency
+
+EQ-Bench 3 provides a rigorous evaluation of emotional intelligence that goes beyond simple sentiment analysis, testing models on the nuanced social skills essential for natural human-AI interaction.
 
 ---
 
