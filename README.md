@@ -850,17 +850,127 @@ EQ-Bench 3 provides a rigorous evaluation of emotional intelligence that goes be
 | Attribute | Details |
 |-----------|---------|
 | **Paper** | [SimpleQA Verified](https://arxiv.org/abs/2509.07968) |
+| **Website** | [OpenAI](https://openai.com/index/introducing-simpleqa/) |
 | **Created By** | OpenAI |
+| **Questions** | 4,326 short, fact-seeking questions |
 | **Focus** | Short-form factual accuracy (hallucination rate) |
 
-SimpleQA measures LLMs' parametric factuality--their ability to correctly answer short factual questions from their training knowledge (not retrieval).
+| **Estimated Error Rate** | ~3% |
+
+SimpleQA is a factuality benchmark that measures the ability of language models to answer short, fact-seeking questions. It addresses a critical open problem in AI: how to train models that produce factually correct responses and avoid "hallucinations"—false outputs or answers unsubstantiated by evidence.
+
+**The Hallucination Problem:**
+
+Current language models sometimes produce false outputs or answers unsubstantiated by evidence. Language models that generate more accurate responses with fewer hallucinations are more trustworthy and can be used in a broader range of applications. Measuring factuality is challenging because evaluating arbitrary factual claims is difficult, and language models can generate long completions containing dozens of claims. SimpleQA focuses on **short, fact-seeking queries**, reducing scope but making factuality measurement much more tractable.
+
+**Four Key Design Goals:**
+
+**1. High Correctness**
+- Reference answers supported by sources from **two independent AI trainers**
+- Questions written so predicted answers are easy to grade
+- Quality verification through multiple stages
+
+**2. Diversity**
+- Covers a wide range of topics: science, technology, TV shows, video games, and more
+- Ensures broad evaluation across different knowledge domains
+
+**3. Challenging for Frontier Models**
+- Compared to older benchmarks (TriviaQA 2017, NQ 2019), which have become saturated
+- Created to challenge frontier models: **GPT-4o scores less than 40%**
+- Tests the limits of current model capabilities
+
+**4. Good Researcher UX**
+- Fast and simple to run with concise questions and answers
+- Efficient grading through OpenAI API or other frontier model APIs
+- **4,326 questions** provide relatively low variance as an evaluation benchmark
+
+**Creation Methodology:**
+
+OpenAI hired AI trainers to browse the web and create questions and answers. To be included in the dataset, each question had to meet strict criteria:
+
+- **Single, Indisputable Answer:** For easy grading
+- **Time-Invariant:** Answer should not change over time
+- **Hallucination-Inducing:** Most questions had to induce hallucinations from either GPT-4o or GPT-3.5
+
+To ensure quality, a **second, independent AI trainer** answered each question without seeing the original response. Only questions where **both trainers' answers agreed** were included.
+
+**Quality Verification:**
+
+OpenAI conducted rigorous quality verification:
+
+- A **third AI trainer** answered a random sample of 1,000 questions
+- **94.4% agreement rate** with original answers (5.6% disagreement)
+- Manual inspection of disagreements revealed:
+  - **2.8% due to grader errors:** False negatives or human errors from the third trainer (incomplete answers, misinterpreting sources)
+  - **2.8% due to real issues:** Ambiguous questions or conflicting website answers
+- **Estimated inherent error rate: ~3%**
+
+**Focus and Scope:**
+
+SimpleQA measures LLMs' **parametric factuality**—their ability to correctly answer short factual questions from their training knowledge (not retrieval). By focusing on tractable, well-defined questions with verifiable answers, SimpleQA provides a reliable measure of model factuality while avoiding the complexity of evaluating long-form, multi-claim responses.
 
 ---
 
 ## Commonsense Reasoning
 
-### HellaSwag & WinoGrande
+### HellaSwag
 
+| Attribute | Details |
+|-----------|---------|
+| **Paper** | [HellaSwag: Can a Machine Really Finish Your Sentence?](https://arxiv.org/abs/2502.11393) |
+| **Introduced** | 2019 (Zellers et al.) |
+| **Validation Set** | 10,000+ tasks |
+| **Sources** | ActivityNet, WikiHow (video caption datasets) |
+| **Format** | Multiple-choice sentence completion (1 correct + 3 adversarial) |
+| **Human Performance** | 95.6% |
+| **Open Models** | ~80% |
+| **Top Proprietary Models** | ~90% |
+
+**HellaSwag** stands for **Harder Endings, Longer contexts, Low-shot Activities for Situations With Adversarial Generations**. It remains one of the most relevant benchmarks in 2025 for measuring commonsense reasoning in large language models. 
+
+**Performance Gap and Relevance:**
+
+While humans reach **95.6% accuracy**, most open models stay around **80%** and only the strongest proprietary models approach **90%**. This persistent gap reveals why HellaSwag remains critical: it tests subtle understanding of everyday actions that expose fundamental limitations in current AI systems.
+
+**What Makes HellaSwag Hard:**
+
+Unlike trivia or math tasks, **commonsense is invisible**. Models often miss it. The benchmark tests understanding of:
+- **Time sequence:** What logically happens next
+- **Physical laws:** How objects and bodies work in the real world
+- **Social norms:** Expected human behavior patterns
+
+That gap reveals why true understanding remains elusive for AI. HellaSwag highlights this disconnect and has become a **diagnostic tool for the limits of current language systems**.
+
+**How It Works:**
+
+Each item in the dataset starts with a short description (1-2 sentences) taken from video caption datasets like **ActivityNet** or **WikiHow**. The model must pick the correct ending from four options:
+
+1. **One correct ending:** Written by a human
+2. **Three adversarial endings:** Designed to be misleading
+
+This is not random. These wrong endings are generated using **adversarial filtering**—chosen specifically because weaker models were fooled by them. The process:
+- Sample completions from language models
+- Keep only those that confuse machines but not humans
+- Ensure they are grammatically correct and superficially plausible
+- But don't match real-world logic
+
+**Dataset Composition:**
+
+The full validation set includes over **10,000 tasks**. Many involve everyday human actions like:
+- Opening a fridge
+- Walking through a doorway
+- Cooking
+- Interacting with objects
+
+This forces the model to reason about what should happen next in simple, everyday scenarios—areas where large language models still fall short.
+
+**Natural Language Inference:**
+
+HellaSwag is also a test of natural language inference. The system needs to complete a story based on **what is implied, not only what is said**. That shift makes HellaSwag more robust than older benchmarks like ARC, requiring models to demonstrate genuine understanding of physical and social reality rather than pattern matching.
+
+---
+
+### WinoGrande
 | Benchmark | Details |
 |-----------|---------|
 | **HellaSwag** | Tests commonsense natural language inference via sentence completion (95%+ accuracy now common). |
