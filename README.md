@@ -38,21 +38,36 @@ As LLMs continue to evolve at a rapid pace, evaluation benchmarks have become es
 |-----------|---------|
 | **Paper** | [MMLU-Pro: A More Robust and Challenging Benchmark](https://arxiv.org/abs/2406.01574) |
 | **Dataset** | [HuggingFace](https://huggingface.co/datasets/TIGER-Lab/MMLU-Pro) |
-| **Questions** | 12,000+ questions |
+| **Questions** | 12,000+ rigorously curated questions |
+| **Sources** | Academic exams and textbooks |
+| **Domains** | 14 (Biology, Business, Chemistry, CS, Economics, Engineering, Health, History, Law, Math, Philosophy, Physics, Psychology, Others) |
 | **Answer Choices** | 10 (vs. 4 in original MMLU) |
 | **Status** | Active, more challenging |
 
-An enhanced version of MMLU designed to be more challenging and reduce the impact of random guessing by expanding answer choices from 4 to 10 and increasing question complexity.
+MMLU-Pro is an enhanced benchmark designed to evaluate language understanding models across broader and more challenging tasks. Building on the Massive Multitask Language Understanding (MMLU) dataset, MMLU-Pro integrates more challenging, reasoning-focused questions and significantly raises the difficulty by expanding answer choices from four to ten options, substantially reducing the chance of success through random guessing.
 
-**Key Improvements:**
-- More complex reasoning required
-- Reduced effectiveness of random guessing
-- Better discrimination between frontier models
-- Focus on reasoning over pure knowledge retrieval
+**What's New About MMLU-Pro:**
+
+**1. Increased Answer Options (4 → 10)**
+- Makes evaluation more realistic and challenging
+- Dramatically reduces random guessing success rate
+- Improves benchmark robustness
+
+**2. Reasoning-Focused Questions**
+- Original MMLU contains mostly knowledge-driven questions without requiring much reasoning
+- MMLU-Pro increases problem difficulty and integrates more reasoning-focused problems
+- **Chain-of-Thought (CoT) prompting can be 20% higher than PPL** (Perplexity-based) methods, demonstrating the reasoning emphasis
+- In original MMLU, PPL results are normally better than CoT
+
+**3. Enhanced Robustness to Prompt Variations**
+- With 24 different prompt styles tested, sensitivity to prompt variations decreased from **4-5% in MMLU to just 2% in MMLU-Pro**
+- Provides more stable and reliable evaluation across different prompting strategies
 
 ---
 
-### ARC (AI2 Reasoning Challenge)
+### ARC (AI2 Reasoning Challenge & ARC-AGI-2)
+
+**ARC (AI2 Reasoning Challenge)**
 
 | Attribute | Details |
 |-----------|---------|
@@ -62,7 +77,69 @@ An enhanced version of MMLU designed to be more challenging and reduce the impac
 | **Subsets** | ARC-Easy (5,197) and ARC-Challenge (2,590) |
 | **Format** | Multiple-choice (3-5 options) |
 
-ARC tests models on grade-school science questions requiring reasoning beyond simple fact retrieval. The Challenge subset specifically contains questions that both word co-occurrence and retrieval algorithms answer incorrectly.
+ARC (the AI2 Reasoning Challenge) is a multiple-choice science QA benchmark of 7,787 natural, grade-school questions, partitioned into an Easy set and a more difficult Challenge set that standard retrieval and word co-occurrence baselines fail to answer.
+
+**Structure and subsets**  
+Subsets: ARC-Easy (5,197 questions) and ARC-Challenge (2,590 questions), where the Challenge set contains only items missed by both a retrieval-based system and a word co-occurrence/PMI baseline.​
+
+**Format**  
+Each question has 3–5 answer options and is scored by accuracy; an associated 14M+ sentence science corpus is provided to support knowledge-intensive models.​
+
+**What ARC measures?**  
+ARC is designed to probe reasoning that goes beyond surface pattern matching, including multi-hop inference, integration of background science knowledge, and non-trivial distractor handling.​
+
+The Challenge subset is widely used as a benchmark for advanced QA systems because it filters out questions solvable by simple lexical overlap or retrieval heuristics, highlighting true reasoning and knowledge integration capabilities.​
+
+---
+
+**ARC-AGI-2 (Abstraction and Reasoning Corpus for AGI)**
+
+| Attribute | Details |
+|-----------|---------|
+| **Technical Paper** | [ARC-AGI-2 Technical Paper](https://arcprize.org/arc-agi-2) |
+| **Introduced** | 2025 (ARC-AGI-1 launched in 2019) |
+| **Tasks** | 1,400+ unique tasks across multiple evaluation sets |
+| **Human Testing** | 400 participants tested |
+| **Human Success** | At least 2 humans solved every task in ≤2 attempts |
+| **Average Time** | ~2.3 minutes per task (human) |
+| **Status** | Active, extremely challenging for AI |
+
+ARC-AGI-2 is the second edition benchmark designed to measure general fluid intelligence and abstract reasoning capabilities in AI systems. Unlike traditional benchmarks, ARC-AGI-2 is specifically crafted to be "easy for humans, hard for AI"—every task is solvable by humans with minimal prior knowledge, yet remains out of reach for current frontier AI systems.
+
+**Evolution from ARC-AGI-1:**
+
+ARC-AGI-1 (2019) was designed to challenge deep learning by resisting simple memorization. The training dataset teaches Core Knowledge Priors required to solve novel evaluation tasks. Think of it as learning basic math symbols (training) and then solving algebra equations (evaluation)—you cannot memorize your way to answers, you must apply existing knowledge to new problems.
+
+ARC-AGI-2 significantly raises the bar by demanding both **high adaptability and high efficiency**, providing more granular evaluation signals for next-generation AI systems.
+
+**Design Goals for ARC-AGI-2:**
+
+1. **Same Fundamental Principles** - Each task is unique and cannot be memorized, requiring only elementary Core Knowledge
+2. **Less Brute-Forcible** - Designed to minimize susceptibility to naive or computationally intensive brute-force program search
+3. **First-Party Human Testing** - Direct empirical comparison between human and AI performance
+4. **More "Signal Bandwidth"** - Wider range of scores to measure the capability gap toward AGI
+5. **Calibrated Difficulty** - Consistent difficulty distributions across Public, Private, and Semi-Private evaluation sets
+
+**Three Key Conceptual Challenges:**
+
+**1. Symbolic Interpretation**
+- Frontier AI reasoning systems struggle with tasks requiring symbols to have meaning beyond visual patterns
+- Systems attempt pattern matching (symmetry, mirroring, transformations) but fail to assign semantic significance to symbols
+
+**2. Compositional Reasoning**
+- AI systems struggle with simultaneous application of multiple interacting rules
+- Can handle single or few global rules consistently, but fail when rules must work together
+
+**3. Contextual Rule Application**
+- Systems struggle when rules must be applied differently based on context
+- Tendency to fixate on superficial patterns rather than understanding underlying selection principles
+
+**Human Performance Validation:**
+
+- **400 participants** tested on **1,400+ unique tasks**
+- Every task met the threshold: **at least 2 humans solved it in ≤2 attempts**
+- Average ~9-10 participants attempted each task
+- No significant correlation found between demographic factors and performance, suggesting ARC-AGI-2 assesses general problem-solving rather than domain-specific knowledge
 
 ---
 
