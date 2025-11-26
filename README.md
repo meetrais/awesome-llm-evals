@@ -572,11 +572,58 @@ While "LMArena" often refers to the platform itself, it also represents a specif
 | Attribute | Details |
 |-----------|---------|
 | **Paper** | [WildBench: Benchmarking LLMs with Challenging Tasks](https://arxiv.org/abs/2406.04770) |
-| **Website** | [huggingface.co/spaces/allenai/WildBench](https://huggingface.co/spaces/allenai/WildBench) |
-| **Questions** | 1,024 challenging real-world user queries |
-| **Judge** | GPT-4o / Claude 3.5 Sonnet (LLM-as-a-judge) |
+| **Website** | [HuggingFace](https://huggingface.co/spaces/allenai/WildBench) |
+| **GitHub** | [allenai/WildBench](https://github.com/allenai/WildBench) |
+| **Created By** | Allen Institute for AI & University of Washington |
+| **Tasks** | 1,024 challenging real-world user queries |
+| **Source** | Selected from 1M+ human-chatbot conversation logs |
+| **Judge** | GPT-4-turbo / Claude 3.5 Sonnet (LLM-as-a-judge) |
+| **Metrics** | WB-Reward (0.98 correlation) & WB-Score (0.95 correlation) |
 
-WildBench evaluates models on "wild" real-world user prompts that are significantly harder and more diverse than standard Chatbot Arena prompts. It focuses on task complexity and mitigating length bias.
+WildBench is an automated evaluation framework designed to benchmark large language models (LLMs) using challenging, real-world user queries. It consists of 1,024 tasks carefully selected from over one million human-chatbot conversation logs, focusing on "wild" prompts that are significantly harder and more diverse than standard benchmark tasks.
+
+**Evaluation Metrics:**
+
+WildBench has developed two advanced metrics computable using LLMs like GPT-4-turbo:
+
+**1. WB-Reward (Pairwise Comparison)**
+- Employs fine-grained pairwise comparisons between model responses
+- Generates **five potential outcomes:**
+  - Much better
+  - Slightly better
+  - Slightly worse
+  - Much worse
+  - Tie
+- Uses **three baseline models** at varying performance levels (unlike previous evaluations with a single baseline)
+- Achieves **Pearson correlation of 0.98** with Chatbot Arena's human-voted Elo ratings for top-ranking models
+
+**2. WB-Score (Individual Quality Assessment)**
+- Evaluates the quality of model outputs individually
+- Fast and cost-efficient evaluation metric
+- Achieves **Pearson correlation of 0.95** with Chatbot Arena Elo ratings
+- **Outperforms competing benchmarks:**
+  - ArenaHard: 0.91 correlation
+  - AlpacaEval2.0: 0.89 (length-controlled win rates)
+  - AlpacaEval2.0: 0.87 (regular win rates)
+
+**Methodology and Features:**
+
+**Task-Specific Checklists**
+- Uses systematic checklists to evaluate model outputs
+- Provides structured explanations that justify scores and comparisons
+- Results in more reliable and interpretable automatic judgments
+
+**Length Bias Mitigation**
+- Implements a simple yet effective method to mitigate length bias
+- Converts outcomes of "slightly better/worse" to "tie" if the winner response exceeds the loser by more than K characters
+- Ensures fair evaluation regardless of response length
+
+**Data Quality**
+- Tasks selected from real-world conversation logs ensure practical relevance
+- Focuses on hard tasks that better discriminate between model capabilities
+- Strong correlation with human preferences demonstrates validity
+
+WildBench's combination of real-world task complexity, sophisticated evaluation metrics, and strong correlation with human judgment makes it a powerful tool for evaluating LLMs on challenging, practical scenarios.
 
 ---
 
