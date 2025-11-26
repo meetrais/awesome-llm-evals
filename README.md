@@ -265,16 +265,36 @@ OlymMATH is a new, challenging Olympiad-level mathematical benchmark for evaluat
 |-----------|---------|
 | **Paper** | [MLE-bench: Evaluating Machine Learning Agents on Machine Learning Engineering](https://openai.com/index/mle-bench/) |
 | **Created By** | OpenAI |
-| **Tasks** | 75 Kaggle competitions |
+| **Tasks** | 75 ML engineering-related Kaggle competitions |
 | **Metric** | Medal rate (Gold, Silver, Bronze) |
+| **Code** | [Open-source benchmark code](https://github.com/openai/mle-bench) |
 
-MLE-bench evaluates how well AI agents perform on end-to-end machine learning engineering tasks sourced from real Kaggle competitions. It tests skills in dataset preparation, model training, and experiment execution.
+OpenAI introduced MLE-bench, a benchmark for measuring how well AI agents perform at machine learning engineering. The benchmark curates 75 ML engineering-related competitions from Kaggle, creating a diverse set of challenging tasks that test real-world ML engineering skills such as training models, preparing datasets, and running experiments.
 
 **Key Features:**
-- Measures "AI building AI" capabilities
-- Uses real-world competitions (House Prices, Titanic, ImageNet variants, etc.)
-- **Human Baseline:** Kaggle Grandmasters
-- **Top Agents:** Achieve "Bronze" level in ~16.9% of competitions (o1-preview baseline).
+
+**Comprehensive Real-World Tasks**
+- 75 curated ML engineering competitions from Kaggle
+- Tests diverse ML engineering skills: dataset preparation, model training, experiment execution
+- Measures "AI building AI" capabilities through end-to-end ML workflows
+
+**Human Baseline Establishment**
+- Human baselines established for each competition using Kaggle's publicly available leaderboards
+- Enables direct comparison between AI agent performance and human ML practitioners
+- Provides meaningful performance benchmarks across different medal tiers (Bronze, Silver, Gold)
+
+**Evaluation and Results**
+- Evaluated several frontier language models using open-source agent scaffolds
+- **Best Performance:** OpenAI's o1-preview with AIDE scaffolding achieves at least the level of a Kaggle bronze medal in **16.9% of competitions**
+- Demonstrates current capabilities and limitations of AI agents in ML engineering tasks
+
+**Additional Research Investigations**
+- **Resource Scaling:** Investigates various forms of resource-scaling for AI agents to understand how additional compute or data affects performance
+- **Contamination Analysis:** Examines the impact of contamination from pre-training data on benchmark results
+
+**Open-Source Availability**
+- Benchmark code is open-sourced to facilitate future research
+- Enables the research community to understand and improve the ML engineering capabilities of AI agents
 
 ---
 
