@@ -8,7 +8,7 @@
 
 As LLMs continue to evolve at a rapid pace, evaluation benchmarks have become essential tools for measuring progress, identifying limitations, and guiding development. This repository provides a detailed guide to the most important, latest, and interesting LLM evaluation benchmarks available today.
 
-**Last Updated: November 26, 2025**
+**Last Updated: December 11, 2025**
 
 ---
 
@@ -1045,6 +1045,104 @@ While HLE represents a significant benchmark achievement, it has faced some crit
 - Have answers that conflict with some peer-reviewed literature
 
 In response, the creators plan a **rolling revision process** to continuously improve question quality and address identified issues, ensuring the benchmark remains rigorous and fair.
+
+---
+
+### GDPval (GDP-value Evaluation)
+
+| Attribute | Details |
+|-----------|---------|
+| **Paper** | [GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks](https://arxiv.org/abs/2510.04374) |
+| **Website** | [OpenAI (GDP-value Evaluation)](https://openai.com/index/gdpval/) |
+| **Created By** | OpenAI |
+| **Tasks** | 1,320 (full set), 220 (gold subset) |
+| **Occupations** | 44 across 9 U.S. GDP sectors |
+| **Expert Experience** | Average 14 years professional experience |
+| **Task Duration** | Average 7 hours (up to multiple weeks) |
+| **Metric** | Win rate (pairwise human expert comparison) |
+| **Status** | Active, open-sourced gold subset |
+
+GDPval is a benchmark designed to evaluate AI model performance on real-world, economically valuable professional tasks. Unlike academic-style benchmarks that focus on reasoning difficulty, GDPval measures AI capabilities on the actual deliverables that professionals create daily—presentations, spreadsheets, reports, legal briefs, engineering blueprints, patient care plans, and financial analyses.
+
+**Motivation and Philosophy:**
+
+Current AI benchmarks often focus on abstract tests and academic challenges. However, to understand AI's potential economic impact, we need to measure performance on tasks that directly contribute to economic value. GDPval addresses this by:
+
+- **Measuring Real Work:** Tasks are based on actual work product from industry experts, not synthetic test problems
+- **Economic Representativeness:** Covers the top 9 sectors contributing to U.S. GDP, with 44 occupations that collectively earn $3 trillion annually
+- **Professional Validation:** All tasks are constructed and graded by industry professionals with an average of 14 years of experience
+
+**Benchmark Coverage:**
+
+GDPval covers occupations across 9 major U.S. GDP-contributing sectors (each contributing >5% to GDP):
+- Software Engineers
+- Nurses and Healthcare Professionals
+- Lawyers and Legal Analysts
+- Financial Analysts and Accountants
+- Journalists and Content Creators
+- Engineers (various disciplines)
+- Business Analysts and Consultants
+- Marketing and Sales Professionals
+- And more across education, government, and other sectors
+
+**Task Characteristics:**
+
+**Multi-Modal and Complex Deliverables:**
+- Tasks require manipulating various formats: CAD design files, photos, videos, audio, social media posts, diagrams, slide decks, spreadsheets, and customer support conversations
+- Each task may require parsing through up to 17 reference files (gold subset) or 38 files (full set)
+- Deliverables span documents, slides, diagrams, spreadsheets, and multimedia
+
+**Long-Horizon Difficulty:**
+- Tasks require an **average of 7 hours** of work for an expert professional to complete
+- On the high end, tasks span **up to multiple weeks** of work
+- This tests sustained reasoning and coherence over extended work periods
+
+**Evaluation Methodology:**
+
+**Human Expert Grading (Primary Method):**
+- Blinded pairwise comparisons by industry professionals
+- Experts in the relevant occupation rank unlabeled work deliverables
+- Grading each comparison takes over an hour on average
+- Experts provide detailed justifications for rankings
+
+**Automated Grader (Experimental):**
+- Available at [evals.openai.com](https://evals.openai.com)
+- Achieves **66% agreement** with human expert graders
+- Human expert inter-rater agreement: **71%**
+- Faster and cheaper alternative, but not a full substitute for expert grading
+
+**Key Findings:**
+
+**Model Performance:**
+- **GPT-5.2 Thinking** achieved a **70.9% win rate**, surpassing human expert work quality
+- Claude Opus 4.1 achieved **47.6% of deliverables** graded as better than or equal to human expert work
+- Claude excels on **aesthetics** (document formatting, slide layout)
+- GPT-5 excels on **accuracy** (instruction following, correct calculations)
+- Model deliverables outperformed or matched expert humans' deliverables in just over half the tasks
+
+**Speed and Cost Analysis:**
+- Frontier AI models can potentially complete tasks **significantly faster and cheaper** than unaided experts
+- Under a "try AI first, fix if needed" workflow, substantial time and cost savings are possible
+- This enables analysis of ROI for AI integration in professional workflows
+
+**Unique Advantages:**
+
+1. **Realism:** Tasks based on actual professional work, not academic exercises
+2. **Representative Breadth:** 1,320 tasks across 44 occupations covering majority of O*NET Work Activities
+3. **Subjectivity Evaluation:** Graders consider style, format, aesthetics, and relevance—not just correctness
+4. **No Upper Limit:** Win rate metric allows continuous evaluation without saturation
+5. **Computer Use and Multi-Modality:** Tests real-world tool and format manipulation
+
+**Limitations:**
+
+- Focus on self-contained digital knowledge work (excludes manual labor, physical tasks)
+- Tasks are precisely-specified and one-shot, not fully interactive
+- Does not capture tasks requiring extensive tacit knowledge, PII access, or proprietary software
+- Current automated grader has limitations compared to human expert evaluation
+
+**Open-Source Availability:**
+
+OpenAI has open-sourced the **220-task gold subset**, including prompts and reference files, to facilitate research in understanding real-world AI capabilities.
 
 ---
 
