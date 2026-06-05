@@ -311,6 +311,7 @@ OpenAI introduced MLE-bench, a benchmark for measuring how well AI agents perfor
 | **Subsets** | Verified (500), Lite (300), Multimodal (517) |
 | **Released** | October 2023 |
 
+| [REFUTE](https://huggingface.co/datasets/BGPT-OFFICIAL/refute) | Scientific critique & epistemic calibration on recent science summaries | 2026 | BGPT | [dataset](https://huggingface.co/datasets/BGPT-OFFICIAL/refute) · [leaderboard](https://huggingface.co/spaces/BGPT-OFFICIAL/refute-leaderboard) |
 SWE-bench tests AI systems' ability to solve real-world GitHub issues. It has become the industry standard for evaluating agentic coding capabilities.
 
 **Task Collection Methodology:**
