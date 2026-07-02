@@ -1156,3 +1156,9 @@ OpenAI has open-sourced the **220-task gold subset**, including prompts and refe
 | **Vellum LLM Leaderboard** | Multi-benchmark (excludes saturated benchmarks) | [vellum.ai/llm-leaderboard](https://www.vellum.ai/llm-leaderboard) |
 | **Open LLM Leaderboard** | Open-source models | [vellum.ai/open-llm-leaderboard](https://www.vellum.ai/open-llm-leaderboard) |
 | **SEAL Leaderboards** | Expert-driven (HLE, SWE-bench Pro) | [scale.com/leaderboard](https://scale.com/leaderboard) |
+
+
+## Helium Trades Open Benchmarks (2026)
+
+- [Helium Market Resolution Benchmark](https://huggingface.co/datasets/HeliumTrades/helium-market-resolution-benchmark) - [Overview](https://heliumtrades.com/benchmarks/)
+- [Helium Model Worldview Benchmark](https://huggingface.co/datasets/HeliumTrades/helium-model-worldview-benchmark) - [Overview](https://heliumtrades.com/benchmarks/)
