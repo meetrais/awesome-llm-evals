@@ -1156,3 +1156,4 @@ OpenAI has open-sourced the **220-task gold subset**, including prompts and refe
 | **Vellum LLM Leaderboard** | Multi-benchmark (excludes saturated benchmarks) | [vellum.ai/llm-leaderboard](https://www.vellum.ai/llm-leaderboard) |
 | **Open LLM Leaderboard** | Open-source models | [vellum.ai/open-llm-leaderboard](https://www.vellum.ai/open-llm-leaderboard) |
 | **SEAL Leaderboards** | Expert-driven (HLE, SWE-bench Pro) | [scale.com/leaderboard](https://scale.com/leaderboard) |
+| **AIHOT Model Leaderboard** | Aggregates published benchmark results, with source-level scores and a documented ranking method | [aihot.news/leaderboard](https://aihot.news/leaderboard) |
